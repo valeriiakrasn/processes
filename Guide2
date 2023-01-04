@@ -1,0 +1,12 @@
+create a receive task project 
+write "name" and ID (for example, email) in General for the task 
+deploy it 
+open in cockpit and copy processinstanceid
+past processinstanceid in Swagger, paste processDefinitionKey and task's ID ("email" above) in activityid
+press "execute"
+copy "id" from the response body
+paste it in signalExecution
+press execute
+go to cockpit to check whether the process is finished 
+curl -X GET "http://localhost:8080/engine-rest/execution?processDefinitionKey=receiveFromCamelProcess&processInstanceId=df4608b2-8c29-11ed-a271-00ff09576864&activityId=waitForCamel"-H "accept: application/json"
+curl -X POST "http://localhost:8080/engine-rest/execution/df4608b2-8c29-11ed-a271-00ff09576864/signal"-H "accept: */*" -H "Content-Type: application/json" -d"{\"variables\":{\"y\":{\"value\":\"3\",\"type\":\"Integer\"},\"mySecondVariable\":{\"value\":124,\"type\":\"Integer\"}}}
