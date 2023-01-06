@@ -11,3 +11,10 @@
 3. curl -X POST "http://localhost:8080/engine-rest/process-definition/key/message_test/start" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"variables\":{\"testVar\":{\"value\":\"stringVal\",\"type\":\"String\"}}}"
 4. curl -X POST "http://localhost:8080/engine-rest/message" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"messageName\":\"email_message\",\"correlationKeys\":{\"testVar\":{\"value\":\"stringVal\",\"type\":\"String\"}}}"
 5. note processInstance terminated
+
+# testMessageNameProcessInstanceId
+1. deploy message_test.bpmn
+2. note receive task/Message/Name, process/General/Id, processInstanceId
+3. curl -X POST "http://localhost:8080/engine-rest/process-definition/key/message_test/start" -H "accept: application/json" -H "Content-Type: application/json" -d ""
+4. curl -X POST "http://localhost:8080/engine-rest/message" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"messageName\":\"email_message\",\"processInstanceId\":\"db24f931-8daf-11ed-a271-00ff09576864\"}"
+5. note processInstance terminated
