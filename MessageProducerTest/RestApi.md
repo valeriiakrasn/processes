@@ -7,5 +7,7 @@
 
 # testMessageNameCorrelationKey
 1. deploy message_test.bpmn
-2. note 
-3. 
+2. note process/General/Id
+3. curl -X POST "http://localhost:8080/engine-rest/process-definition/key/message_test/start" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"variables\":{\"testVar\":{\"value\":\"stringVal\",\"type\":\"String\"}}}"
+4. 
+
