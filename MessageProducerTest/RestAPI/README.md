@@ -20,3 +20,10 @@
 5. curl -X POST "http://localhost:8080/engine-rest/message" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"messageName\":\"email_message\",\"processInstanceId\":\"db24f931-8daf-11ed-a271-00ff09576864\"}"
 6. note processInstance terminated
 
+# testMessageNameBusinessKey
+1. deploy message_test.bpmn
+2. note process/General/Id, receive task/Message/Name
+3. curl -X POST "http://localhost:8080/engine-rest/process-definition/key/message_test/start" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"businessKey\":\"BusinessKey12345\"}"
+4. curl -X POST "http://localhost:8080/engine-rest/message" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"messageName\":\"email_message\",\"businessKey\":\"BusinessKey12345\"}"
+5. note processInstance terminated
+
