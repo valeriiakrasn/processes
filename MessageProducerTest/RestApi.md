@@ -7,7 +7,7 @@
 
 # testMessageNameCorrelationKey
 1. deploy message_test.bpmn
-2. note process/General/Id
+2. note process/General/Id, receive task/Message/Name
 3. curl -X POST "http://localhost:8080/engine-rest/process-definition/key/message_test/start" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"variables\":{\"testVar\":{\"value\":\"stringVal\",\"type\":\"String\"}}}"
-4. 
-
+4. curl -X POST "http://localhost:8080/engine-rest/message" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"messageName\":\"email_message\",\"correlationKeys\":{\"testVar\":{\"value\":\"stringVal\",\"type\":\"String\"}}}"
+5. note processInstance terminated
